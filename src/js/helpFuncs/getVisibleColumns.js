@@ -5,8 +5,8 @@ function getVisibleColumns() {
   
   columns.forEach( column => {
     if (column.offsetParent != null) columnsArray.push(column);
-  })
-
+  });
+  
   return columnsArray;
 }
 

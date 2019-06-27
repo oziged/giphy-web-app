@@ -1,12 +1,9 @@
-  /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1280px)
   .content
     &_column
       width: 50%
       &:last-child
         display: none
-
-
 
 @media only screen and (max-width : 992px)
   .content
@@ -21,6 +18,21 @@
   .content
 
 @media only screen and (max-width : 480px)
+  .header
+    &_active, &_scroll
+      padding: 10px 0 10px 0
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      button, input
+        margin-right: 0
+        border-bottom: 1px solid black
+        width: 50%
+      input
+        box-sizing: border-box
+        padding: 5px 10px 5px 10px
+        
   .content
     &_column
       width: 100%

@@ -7,7 +7,10 @@ function setGifListeners(elem, pauseGif, playGif, storageArray, local) {
   elem.addEventListener('mousedown', () => {
     timeout = setTimeout(() => {
       if (local) {
-        storageArray.slice(storageArray.indexOf(elem), 1);
+        let indexElem = storageArray.findIndex( obj => {
+          if (obj['play'] == elem.src) return true;
+        })
+        storageArray.splice(indexElem, 1);
         localStorage.setItem('fav', JSON.stringify(storageArray));
         elem.remove();
         createAlert({
@@ -34,9 +37,7 @@ function setGifListeners(elem, pauseGif, playGif, storageArray, local) {
 
   elem.addEventListener('mouseup', () => {
     clearTimeout(timeout);
-  } )
-
- 
+  })
 }
 
 export default setGifListeners;

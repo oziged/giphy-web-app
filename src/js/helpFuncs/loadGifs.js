@@ -4,6 +4,8 @@ import startXML from './startXML';
 
 let storageArray = JSON.parse(localStorage.getItem('fav')) || [];
 
+/////////// main load func ///////////
+
 function loadGifs (options, clear, local) {
   local = options.local;
   if (clear) clearColumns(options.columns);
@@ -22,12 +24,12 @@ function loadGifs (options, clear, local) {
     return 'https://api.giphy.com/v1/gifs/search?api_key=wMqvSK3gHL65KRyFxTxyrNCUCJbskKtb&q='+options.phrase+'&limit='+options.limit+'&offset='+options.offset;
   }
 
+////////// lazy load ///////////
 
   function onscrollFunc() {
-    let visibleHeight = document.documentElement.clientHeight;
+    let visibleHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
     let scrolledHeight = window.pageYOffset;
     let wholeHeight = document.body.clientHeight;
-    console.log(local);
     if (visibleHeight + scrolledHeight > wholeHeight - 50) 
       {
         if (!local) {
@@ -40,20 +42,23 @@ function loadGifs (options, clear, local) {
         }
       };
   }
+
   document.onscroll = onscrollFunc;
 
+////////// reload after page resize /////////////
+
   let timer;
-window.onresize = () => {
-  if (timer) clearTimeout(timer);
-  timer = setTimeout(() => {
-            window.scrollTo(0,0);
-            setTimeout(() => {
-              options.offset = 0;
-              options.columns = getVisibleColumns();
-              loadGifs(options, true);
-            }, 0);
-  }, 1000);
-}
+  if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent))) {
+    window.onresize = () => { 
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        options.offset = 0;
+        options.columns = getVisibleColumns();
+        loadGifs(options, true);
+      }, 1000);
+    }
+  }
+
   }
 
 export default loadGifs;

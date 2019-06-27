@@ -2,18 +2,17 @@ import addGifs from './addGifs';
 import setGifListeners from './setGifListeners';
 import getVisibleColumns from './getVisibleColumns';
 
-
-
 function startXML(options, link, storageArray, local) {
   options.columns = getVisibleColumns();
     if (!local) {
       let xhr = new XMLHttpRequest;
       xhr.open('GET', link, true);
       xhr.send();
-      xhr.onerror = () => loadGifs(options);
+      xhr.onerror = () => setTimeout(() => {
+        loadGifs(options);
+      }, 200);
       xhr.onload = () => {
         let response = JSON.parse(xhr.responseText);
-        console.log(response);
         response['data'].forEach(elem => setIMG(elem, false));
       }
     }
