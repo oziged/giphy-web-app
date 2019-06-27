@@ -11,7 +11,7 @@ Here are some screenshots to see app main functional.
 ##### Lazy load
 <img src="https://github.com/eugenedrvnk/eugenedrvnk.github.io/blob/master/projects/gif-storage/giphy-web-app-lazy-load.gif?raw=true">
 
-##### GIFs are activated 'onmouseenter'
+##### GIFs can be activated 'onmouseenter'
 <img src="https://github.com/eugenedrvnk/eugenedrvnk.github.io/blob/master/projects/gif-storage/giphy-web-app-playing-gifs.gif?raw=true">
 
 ##### Deleting/adding GIF from/to 'favorites' through long mousedown
