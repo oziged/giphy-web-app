@@ -1,6 +1,6 @@
 # GIPHY web app
 
-This Repo contains code for GIPHY web app. This is an application working with GIPHY API that allows users to search GIFs, check trend animation and create list of favorite anim-s. The project is based on Vanilla JS (ES6), SASS and was built via Webpack.
+This Repo contains code for GIPHY web app. This is an application working with GIPHY API that allows users to search GIFs, check trend animation and create list of favorite anim-s. The project is based on pure JS (ES6), SASS and was built via Webpack.
 
 Here are some screenshots to see app main functional.
 
